@@ -36,7 +36,22 @@ merged: a p b q c   d
  /**
   * MergeStringsAlternately
   */
- public class MergeStringsAlternately {
- 
-    
- }
+  class Solution {
+    public String mergeAlternately(String word1, String word2) {
+        StringBuilder result = new StringBuilder();
+
+        int minLength = Math.min(word1.length(), word2.length());
+
+        for (int i = 0; i < minLength; i++) {
+            result.append(word1.charAt(i)).append(word2.charAt(i));
+        }
+
+        if (minLength < word1.length()) {
+            result.append(word1.substring(minLength));
+        } else if (minLength < word2.length()) {
+            result.append(word2.substring(minLength));
+        }
+
+        return result.toString();
+    }
+}
